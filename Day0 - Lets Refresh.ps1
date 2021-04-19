@@ -31,10 +31,25 @@ get-service | Get-Member
 
 get-service | select-object Status
 
-get-service |where-object status -eq 'stopped'
+get-service | where-object status -eq 'stopped'
 
-get-service |where-object status -eq 'stopped' | Select-Object name
+get-service | where-object status -eq 'stopped' | Select-Object name
 
-get-service |where-object status -eq 'stopped' | Select-Object name | Out-File .\stoppedservices.txt
+get-service | where-object status -eq 'stopped' | Select-Object name | Out-File .\stoppedservices.txt
 
-get-module -ListAvailable
+$services = get-service
+
+$services | where-object status -eq 'stopped' 
+
+##Copy to new page and format document
+$services = get-service | Select-Object Name
+
+foreach ($s in $services) {if($s.name -eq "winrm") {write-host "BINGO"}}
+
+foreach ($s in $services) 
+{ 
+if(
+$s.name -eq "winrm"
+) 
+{write-host "BINGO"} 
+}
