@@ -1,3 +1,11 @@
+import-module posh-git
+
+function Test-Administrator {
+    $user = [Security.Principal.WindowsIdentity]::GetCurrent();
+    (New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
+}
+
+#region
 function prompt {
 
     #Assign Windows Title Text
@@ -38,15 +46,9 @@ function prompt {
     return "> "
 } #end prompt function
 
+#endregion
 
-# Import module from previous step
-Import-Module -Name posh-git
-
-function Test-Administrator {
-    $user = [Security.Principal.WindowsIdentity]::GetCurrent();
-    (New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
-}
-
+#region Second Profile
 function prompt {
     $realLASTEXITCODE = $LASTEXITCODE
 
@@ -81,4 +83,15 @@ function prompt {
     Write-Host ""
 
     return "> "
+}
+#endregion
+
+Import-Module Get-ChildItemColor
+
+# Change color for directories to Blue
+$GetChildItemColorTable.File['Directory'] = "cyan"
+
+# Change color for executables to Green
+ForEach ($Exe in $GetChildItemColorExtensions.ExecutableList) {
+    $GetChildItemColorTable.File[$Exe] = "Green"
 }
