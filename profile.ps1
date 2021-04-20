@@ -1,3 +1,12 @@
+
+function prompt
+{
+    $host.ui.rawui.WindowTitle = (get-location)
+    $lastCommand = Get-History -Count 1
+    if($lastCommand) { Write-Host ("last command took") ($lastCommand.EndExecutionTime - $lastCommand.StartExecutionTime).TotalMilliseconds ("ms") }
+    return "PS>"
+}
+
 import-module posh-git
 
 function Test-Administrator {
