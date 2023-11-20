@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "r7Pmw1MYY88x/V3isCXo5OZCbzSsvqAzPtr4BYR8reT6qDKYXUQ1Ispp+8fYXXqD//CwAWSfyOgX0RKYHd4NLw==",
+  "success": false,
+  "projectFilePath": "C:\\Scripts\\sample\\SampleMvcApp.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Failed to retrieve information about 'Auth0.AspNetCore.Authentication' from remote source 'https://packagesource/FindPackagesById()?id='Auth0.AspNetCore.Authentication'&semVerLevel=2.0.0'.",
+      "libraryId": "Auth0.AspNetCore.Authentication"
+    }
+  ]
+}
